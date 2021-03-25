@@ -1,0 +1,25 @@
+1.Se plantea desarrollar un programa Java que permita la gestión de una empresa 
+agroalimentaria  que  trabaja  con  tres  tipos  de  productos:  productos  frescos,
+productos  refrigerados  y  productos  congelados.  Todos  los  productos  llevan 
+alguna información común como fecha de caducidad y número de lote, pero a su vez  
+cada  tipo  de  producto  lleva  alguna  información  específica,  por  ejemplo 
+los productos congelados deben llevar la temperatura de congelación recomendada. 
+Hay  tres  tipos  de  productos  congelados:congelados  por  aire,  congelados  
+por agua y congelados por nitrógeno.
+
+La  empresa  gestiona  envíos  a  través de  diferentes  medios,  y  un  envío  puede contener cierto número de productos frescos, refrigerados o congelados.
+
+
+ Identificar las 7 clases Java principales que podemos identificar 
+ dada la forma de funcionamiento de la empresa.Crear un esquema con
+ las relaciones de herencia y/o uso entre las distintas clases.
+  
+  Productos
+  Productos frescos
+  Productos refrigerados
+  Productos congelados
+  Congelados por aire
+  Congelados por agua
+  Congelados por nitrógeno
+ 
+ 
