@@ -13,7 +13,7 @@ public class Hola {
 	/*** Métodos ***/
 
 	public String toString() {
-		return "Hola " + this.nombreEstudiante;
+		return " " + this.nombreEstudiante;
 	}
 
 	public static void main(String[] args) {
