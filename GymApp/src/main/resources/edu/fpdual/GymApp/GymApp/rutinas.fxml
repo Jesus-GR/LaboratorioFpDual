@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="607.0" prefWidth="535.0">
+         <children>
+            <Label layoutX="183.0" layoutY="44.0" prefHeight="49.0" prefWidth="169.0" text="Mis rutinas">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <ListView layoutX="53.0" layoutY="98.0" prefHeight="455.0" prefWidth="445.0" />
+            <SplitMenuButton layoutX="183.0" layoutY="135.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="197.0">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </SplitMenuButton>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
