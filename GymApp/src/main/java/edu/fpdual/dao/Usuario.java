@@ -3,6 +3,7 @@ package edu.fpdual.dao;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,9 @@ public class Usuario {
 	private String apellido1;
 	private String apellido2;
 	private String direccion;
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	private String altura;
-	private int peso;
+	private String peso;
 	private String contraseña;
 	
 	public Usuario(ResultSet result) {
@@ -33,14 +34,22 @@ public class Usuario {
 			this.apellido1 = result.getString("Ape1");
 			this.apellido2 = result.getString("Ape2");
 			this.direccion = result.getString("Direccion");
-			this.fechaNacimiento = result.getDate("FechNac");
+			this.fechaNacimiento = result.getString("FechNac");
 			this.altura = result.getString("Altura");
-			this.peso = result.getInt("Peso");
+			this.peso = result.getString("Peso");
 			this.contraseña = result.getString("Contraseña");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		
 	}
+	
+	public Usuario(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	
+	
+	
 	
 }

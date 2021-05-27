@@ -1,6 +1,7 @@
 package edu.fpdual.manager;
 
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -9,9 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
 import edu.fpdual.dao.Usuario;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,22 +24,62 @@ import lombok.ToString;
 @Setter
 @ToString
 public class UsuarioManager {
-
-	public boolean findById(Connection con, TextField nombre, PasswordField contraseña) {
+	
+	public int obtenerCodigoUsuario(Connection con, String nombre) {
 		try(Statement stmt = con.createStatement()){
-			String sql = String.format("Select * from Usuario where NomUsu = '%s' and Contraseña = '%s' ", nombre,contraseña);
+			String sql = String.format("SELECT CodUsu from usuario where NomUsu = '%s'", nombre);
+			
 			ResultSet result = stmt.executeQuery(sql);
-			if(result != null) {
+			result.beforeFirst();
+			Usuario usuario = new Usuario(result);
+			return usuario.getCodigo();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public boolean findById(Connection con, String nombre, String contraseña) {
+		try(PreparedStatement stmt = con.prepareStatement("Select * from Usuario where NomUsu = ? and contraseña = ?")){
+			stmt.setString(1, nombre);
+			stmt.setString(2, contraseña);
+			ResultSet result = stmt.executeQuery();
+			result.beforeFirst();
+			result.next();
+			Usuario usuario = new Usuario(result);
+			if(usuario.getNombre().equals(nombre)  && usuario.getContraseña().equals(contraseña) ) {
 				return true;
+				
 			}else {
 				return false;
+				
+				
 			}
-			
+
 		}catch(SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
+	
+	
+//	public List<Usuario> findById(Connection con, String nombre, String contraseña) {
+//		try(PreparedStatement stmt = con.prepareStatement("Select * from Usuario where NomUsu = ? and Contraseña = ? ")){
+//			stmt.setString(1, nombre);
+//			stmt.setString(2, contraseña);
+//			ResultSet result = stmt.executeQuery();
+//			result.beforeFirst();
+//			List<Usuario> usuario = new ArrayList<>();
+//			while(result.next()){
+//				usuario.add(new Usuario(result));
+//			}
+//			
+//			return usuario;
+//		}catch(SQLException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
 	
 	
 	public List<Usuario> findAll (Connection con){
@@ -54,16 +99,16 @@ public class UsuarioManager {
 		return null;
 	}
 	
-	public int insertUsuario(Connection con,String nombre,String ape1, String ape2, String direccion, Date fecha, int peso, String altura,String contraseña) {
+	public int insertUsuario(Connection con,String nombre, String contraseña, String ape1, String ape2, String direccion, String fecha, String peso, String altura) {
 		try(PreparedStatement stmt = con.prepareStatement("insert usuario values ((Select Max(CodUsu) + 1 from usuario as max),?,?,?,?,?,?,?,?);")){
 			stmt.setString(1, nombre);
-			stmt.setString(2, ape1);
-			stmt.setString(3, ape2);
-			stmt.setString(4, direccion);
-			stmt.setDate(5, fecha);
-			stmt.setInt(6, peso);
-			stmt.setString(7, altura);
-			stmt.setString(8, contraseña);
+			stmt.setString(2, contraseña);
+			stmt.setString(3, ape1);
+			stmt.setString(4, ape2);
+			stmt.setString(5, direccion);
+			stmt.setString(6, fecha);
+			stmt.setString(7, peso);
+			stmt.setString(8, altura);
 			int result = stmt.executeUpdate();
 	
 			return result;

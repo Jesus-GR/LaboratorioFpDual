@@ -14,16 +14,19 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("Login"), 640, 480);
         stage.setScene(scene);
         stage.show();
+        this.stage = stage;
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        stage.sizeToScene();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

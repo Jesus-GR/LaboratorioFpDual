@@ -4,11 +4,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 
 public class Musculos {
 	private int codigoMusculo;
@@ -22,5 +24,9 @@ public class Musculos {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public String toString() {
+		return this.nombreMusculo+"";
 	}
 }

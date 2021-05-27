@@ -5,8 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.Rutinas">
    <children>
       <AnchorPane prefHeight="607.0" prefWidth="535.0">
          <children>
@@ -15,13 +14,8 @@
                   <Font size="33.0" />
                </font>
             </Label>
-            <ListView layoutX="53.0" layoutY="98.0" prefHeight="455.0" prefWidth="445.0" />
-            <SplitMenuButton layoutX="183.0" layoutY="135.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="197.0">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </SplitMenuButton>
+            <Button fx:id="nuevaRutina" layoutX="82.0" layoutY="503.0" mnemonicParsing="false" onAction="#cambiarNuevaRutina" text="Nueva Rutina" />
+            <Button fx:id="volverALogin" layoutX="320.0" layoutY="503.0" mnemonicParsing="false" onAction="#cambiarLogin" prefHeight="31.0" prefWidth="76.0" text="Volver" />
          </children>
       </AnchorPane>
    </children>

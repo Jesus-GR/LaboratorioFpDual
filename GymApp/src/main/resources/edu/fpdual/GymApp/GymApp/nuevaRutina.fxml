@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="888.0" style="-fx-background-color: aqua;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.NuevaRutinaController">
+   <children>
+      <AnchorPane prefHeight="720.0" prefWidth="888.0" style="-: ;">
+         <children>
+            <Accordion layoutX="144.0" layoutY="80.0" prefHeight="0.0" prefWidth="9.0" />
+            <DatePicker fx:id="inicioRutina" layoutX="206.0" layoutY="126.0" />
+            <DatePicker fx:id="finRutina" layoutX="466.0" layoutY="126.0" />
+            <Label layoutX="212.0" layoutY="103.0" prefHeight="21.0" prefWidth="130.0" text="Inicio" />
+            <Label layoutX="472.0" layoutY="103.0" text="Fin" />
+            <Label layoutX="205.0" layoutY="165.0" text="Selecciona el dia de la semana" />
+            <Label layoutX="458.0" layoutY="165.0" text="Selecciona grupo muscular" />
+            <AnchorPane layoutX="15.0" layoutY="307.0" prefHeight="335.0" prefWidth="859.0" style="-fx-background-color: aqua;">
+               <children>
+                  <TableView fx:id="tblEjercicio" layoutX="17.0" layoutY="26.0" onMouseClicked="#guardarRutina" prefHeight="169.0" prefWidth="449.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="26.0">
+                     <columns>
+                        <TableColumn fx:id="nombreEjercicioColumn" prefWidth="393.0" text="Nombre Ejercicio" />
+                        <TableColumn fx:id="codigoEjercicioColumn" prefWidth="381.0" text="Codigo Ejercicio" />
+                     </columns></TableView>
+               </children></AnchorPane>
+            <ComboBox fx:id="comboBox" layoutX="458.0" layoutY="190.0" onAction="#mostrarEjercicio" prefWidth="150.0" />
+            <ComboBox fx:id="comboDias" layoutX="212.0" layoutY="190.0" prefWidth="150.0" />
+            <TextField fx:id="nombreRutina" layoutX="360.0" layoutY="62.0" />
+            <Label layoutX="226.0" layoutY="67.0" text="Nombre Rutina" />
+            <Button fx:id="guardarNuevaRutina" layoutX="466.0" layoutY="656.0" mnemonicParsing="false" text="Guardar" />
+            <Button fx:id="volverARutinas" layoutX="284.0" layoutY="656.0" mnemonicParsing="false" onAction="#volverARutinas" text="Volver" />
+            <Label layoutX="205.0" layoutY="236.0" prefHeight="21.0" prefWidth="91.0" text="Repeticiones" />
+            <TextField fx:id="repeticiones" layoutX="302.0" layoutY="231.0" prefHeight="31.0" prefWidth="49.0" />
+            <Label layoutX="380.0" layoutY="236.0" prefHeight="21.0" prefWidth="74.0" text="Descanso" />
+            <TextField fx:id="descanso" layoutX="468.0" layoutY="231.0" prefHeight="31.0" prefWidth="49.0" />
+            <Label layoutX="531.0" layoutY="236.0" text="Peso" />
+            <TextField fx:id="peso" layoutX="590.0" layoutY="231.0" prefHeight="31.0" prefWidth="62.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

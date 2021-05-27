@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.MusculoControlador">
+   <children>
+      <AnchorPane prefHeight="607.0" prefWidth="535.0">
+         <children>
+            <Label layoutX="183.0" layoutY="44.0" prefHeight="49.0" prefWidth="169.0" text="Mis rutinas">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <Button fx:id="nuevaRutina" layoutX="213.0" layoutY="511.0" mnemonicParsing="false"  text="Nueva Rutina" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

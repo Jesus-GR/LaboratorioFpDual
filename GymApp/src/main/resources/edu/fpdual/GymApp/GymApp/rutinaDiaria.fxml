@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.RutinaDiariaController">
+   <children>
+      <AnchorPane prefHeight="607.0" prefWidth="535.0">
+         <children>
+            <Label layoutX="159.0" layoutY="44.0" prefHeight="49.0" prefWidth="218.0" text="NombreRutina">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <Button fx:id="nuevaRutina" layoutX="207.0" layoutY="428.0" mnemonicParsing="false" text="Finalizar Rutina" />
+            <TableView layoutX="14.0" layoutY="187.0" prefHeight="200.0" prefWidth="507.0">
+              <columns>
+                <TableColumn prefWidth="86.0" text="Nombre" />
+                <TableColumn minWidth="9.0" prefWidth="105.0" text="Repeticiones" />
+                  <TableColumn prefWidth="87.0" text="Descanso" />
+                  <TableColumn prefWidth="65.0" text="Peso" />
+                  <TableColumn prefWidth="163.0" text="Series" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

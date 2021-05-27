@@ -7,10 +7,12 @@ import java.sql.Timestamp;
 
 import edu.fpdual.conector.Conector;
 import edu.fpdual.dao.Rutina;
+import edu.fpdual.dao.RutinaEjercicio;
 import edu.fpdual.dao.Usuario;
 import edu.fpdual.manager.EjercicioManager;
 import edu.fpdual.manager.MusculosManager;
 import edu.fpdual.manager.RutinaManager;
+import edu.fpdual.manager.RutinaEjercicioManager;
 import edu.fpdual.manager.UsuarioManager;
 import javafx.scene.control.TextField;
 
@@ -54,7 +56,28 @@ public class main {
 //		
 //		new RutinaManager().findAll(con).forEach(lista -> System.out.println(lista));
 		
-		System.out.println(new UsuarioManager().findById(con, null, null));
+		
+		
+//		Usuario usuario = new Usuario();
+//		usuario.setNombre("Jesus");
+//		usuario.setContraseña("12345");
+//		usuario.setApellido1("Gutierrez");
+//		usuario.setApellido2("Ramirez");
+//		usuario.setFechaNacimiento("11-23-32");
+//		usuario.setDireccion("adfad");
+//		usuario.setPeso(12);
+//		usuario.setAltura("123");
+//		
+//		new UsuarioManager().insertUsuario(con, usuario.getNombre(),usuario.getContraseña(), usuario.getApellido1(), usuario.getApellido2(), usuario.getDireccion(), usuario.getFechaNacimiento(),usuario.getPeso(),  usuario.getAltura());
+		
+		//System.out.println(new UsuarioManager().findById(con, "ADFASDFA", "1234"));
+		
+		//new EjercicioManager().findByMuscle(con, "Dorsales").forEach(ejercicios -> System.out.println(ejercicios));
+		
+		
+		
+		
+
 		
 	}
 

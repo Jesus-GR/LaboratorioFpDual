@@ -15,12 +15,12 @@ import edu.fpdual.dao.Usuario;
 
 public class RutinaManager {
 
-	public int addRutine(Connection con, String nombre, int codigo, Timestamp FechIni, Timestamp FechFin) {
+	public int addRutine(Connection con, String nombre, int codigoUsuario, String FechIni, String FechFin) {
 		try (PreparedStatement stmt = con.prepareStatement("Insert into rutina values ((SELECT MAX(CodRut)+1 from rutina as max),?,?,?,?)")) {
 			stmt.setString(1, nombre);
-			stmt.setInt(2, codigo);
-			stmt.setTimestamp(3, FechIni);
-			stmt.setTimestamp(4, FechFin);
+			stmt.setInt(2, codigoUsuario);
+			stmt.setString(3, FechIni);
+			stmt.setString(4, FechFin);
 			int result = stmt.executeUpdate();
 			return result;
 		} catch (SQLException e) {
@@ -55,5 +55,6 @@ public class RutinaManager {
 			return null;
 		}
 	}
+	
 
 }
