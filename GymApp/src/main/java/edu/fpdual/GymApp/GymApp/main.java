@@ -74,8 +74,11 @@ public class main {
 		
 		//new EjercicioManager().findByMuscle(con, "Dorsales").forEach(ejercicios -> System.out.println(ejercicios));
 		
+		//System.out.println(new RutinaManager().findIdByName(con, "MeCagoEnMiPutaVida"));
 		
+	//System.out.println(new RutinaManager().fillRutineByCodUsu(con, 1));
 		
+		new RutinaEjercicioManager().rutinaSemanal(con, "Miercoles").forEach(s -> System.out.println(s));
 		
 
 		

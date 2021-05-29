@@ -17,6 +17,7 @@ import com.sun.glass.events.MouseEvent;
 import edu.fpdual.conector.Conector;
 import edu.fpdual.dao.Ejercicio;
 import edu.fpdual.dao.Musculos;
+import edu.fpdual.dao.Rutina;
 import edu.fpdual.dao.RutinaEjercicio;
 import edu.fpdual.dao.Usuario;
 import edu.fpdual.manager.EjercicioManager;
@@ -61,9 +62,7 @@ public class NuevaRutinaController implements Initializable {
 	@FXML
 	TableColumn<Ejercicio, String>  nombreEjercicioColumn;
 	@FXML
-	ListView<Ejercicio> listaEjercicios;
-	@FXML
-	Integer codigoUsuario;
+	int codigoUsuario = App.getUsuario().getCodigo();
 	@FXML
 	TextField userText;
 	@FXML
@@ -72,6 +71,7 @@ public class NuevaRutinaController implements Initializable {
 	TextField descanso;
 	@FXML
 	TextField peso;
+	
 	
 	
 	
@@ -142,33 +142,40 @@ public class NuevaRutinaController implements Initializable {
 	
 	@FXML
 	 ObservableList<Ejercicio> lista =  FXCollections.observableArrayList();
-	@FXML
-	public void añadirEjercicio() throws ClassNotFoundException {
-		
-			
-				lista.add(tblEjercicio.getSelectionModel().getSelectedItem());
-				listaEjercicios.setItems(lista);
-	}
 	
 	@FXML
 	public void guardarRutina() throws ClassNotFoundException, SQLException {
 		try(Connection con = new Conector().getMySqlConnection()){
-			new RutinaManager().addRutine(con, nombreRutina.getText(), 1, inicioRutina.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), finRutina.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-			new RutinaEjercicioManager().nuevaRutina_Ejercicio(con, tblEjercicio.getSelectionModel().getSelectedItem().getCodigoEjercicio(), repeticiones.getText(), descanso.getText(), Integer.parseInt(descanso.getText()), comboDias.getValue(),tblEjercicio.getSelectionModel().getSelectedItem().getNombreEjercicio());
+			new RutinaManager().addRutine(con, nombreRutina.getText(), this.codigoUsuario, inicioRutina.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), finRutina.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+			App.setNombreRutinaPorFavor(nombreRutina.getText());
+
 		}
 	}
 	
+	
+	
+	@FXML
+	public void guardarEjercicio() throws ClassNotFoundException, SQLException {
+		try(Connection con = new Conector().getMySqlConnection()){
+			int codigoRutina = new RutinaManager().findIdByName(con,App.getNombreRutinaPorFavor());
+			System.out.println(codigoRutina);
+		new RutinaEjercicioManager().nuevaRutinaEjercicio(con,codigoRutina   ,tblEjercicio.getSelectionModel().getSelectedItem().getCodigoEjercicio(), repeticiones.getText(), descanso.getText(), Integer.parseInt(descanso.getText()), comboDias.getValue(),tblEjercicio.getSelectionModel().getSelectedItem().getNombreEjercicio());	
+		}
+		
+	}
+	
+	
 //	@FXML
-//	public int obtenerCodUsu() {
+//	public int obtenerCodigoRutina() throws ClassNotFoundException, SQLException {
 //		try(Connection con = new Conector().getMySqlConnection()){
-//			Usuario usuarioNombre = new Usuario();
-//			usuarioNombre.setNombre(userText.getText());
-//			this.codigoUsuario = new UsuarioManager().obtenerCodigoUsuario(con,usuarioNombre.getNombre());
-//			return this.codigoUsuario;
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//			return 0;
-//		}
+//			codigoRutina =  new RutinaManager().findIdByName(con, nombreRutina.getText());
+//			return codigoRutina;
+//  	}
 //	}
+	
+	@FXML
+	public void mirarUsuario() {
+		System.out.println(App.getNombreRutinaPorFavor());
+	}
 
 }

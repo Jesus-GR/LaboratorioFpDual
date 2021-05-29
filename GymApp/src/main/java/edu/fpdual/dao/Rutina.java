@@ -27,6 +27,7 @@ public class Rutina {
 		try {
 		this.codRut = result.getInt("CodRut");	
 		this.nomRut = result.getString("NomRut");
+		this.codigo = result.getInt("Usuario_CodUsu");
 		this.FechFin = result.getTimestamp("FechIni");
 		this.FechFin = result.getTimestamp("FechFin");
 		
@@ -34,5 +35,9 @@ public class Rutina {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public String toString() {
+		return this.nomRut;
 	}
 }

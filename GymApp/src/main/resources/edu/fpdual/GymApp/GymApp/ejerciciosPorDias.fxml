@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.EjerciciosPorDiasController">
+   <children>
+      <AnchorPane prefHeight="607.0" prefWidth="535.0">
+         <children>
+            <Label layoutX="74.0" layoutY="47.0" prefHeight="49.0" prefWidth="387.0" text="Semana de entrenamiento">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <Button fx:id="nuevaRutina" layoutX="207.0" layoutY="428.0" mnemonicParsing="false" text="Finalizar Rutina" />
+            <TableView fx:id="tblSemana" layoutX="25.0" layoutY="174.0" prefHeight="200.0" prefWidth="472.0">
+               <columns>
+                  <TableColumn fx:id="diaDeLaSemanaColumn" prefWidth="138.0" text="Dia de la semana" />
+                  <TableColumn fx:id="grupoMuscularColumn" prefWidth="333.0" text="Grupo muscular" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

@@ -8,13 +8,61 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import edu.fpdual.dao.Rutina;
+import edu.fpdual.dao.Usuario;
+
 /**
  * JavaFX App
  */
-public class App extends Application {
 
-    private static Scene scene;
-    private static Stage stage;
+public class App extends Application {
+	
+	
+	private static Stage stage;
+	
+	/**
+	 * Creamos un usuario estático en App para poder utilizar el nombre en las siguientes pantallas
+	 */
+    private static Usuario usuario;
+    private static Rutina rutina;
+    private static String nombreRutinaPorFavor;
+   
+
+    public static String getNombreRutinaPorFavor() {
+		return nombreRutinaPorFavor;
+	}
+
+	public static void setNombreRutinaPorFavor(String nombreRutinaPorFavor) {
+		App.nombreRutinaPorFavor = nombreRutinaPorFavor;
+	}
+
+	public static Rutina getRutina() {
+		return rutina;
+	}
+
+	public static void setRutina(Rutina rutina) {
+		App.rutina = rutina;
+	}
+
+	private static Scene scene;
+    
+    public static Scene getScene() {
+		return scene;
+	}
+
+	public static void setScene(Scene scene) {
+		App.scene = scene;
+	}
+
+	public static Usuario getUsuario() {
+		return usuario;
+	}
+
+	public static void setUsuario(Usuario usuario) {
+		App.usuario = usuario;
+	}
+
+	
 
     @Override
     public void start(Stage stage) throws IOException {

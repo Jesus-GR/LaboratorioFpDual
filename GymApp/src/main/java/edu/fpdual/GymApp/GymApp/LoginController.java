@@ -38,8 +38,12 @@ public class LoginController {
 	
 	private void login() throws ClassNotFoundException, SQLException, IOException {
 		Connection con = new Conector().getMySqlConnection();
-
-		if (new UsuarioManager().findById(con, userText.getText(), passwordText.getText())) {
+		
+		/*Utilizamos el método UsuarioManager().findById para almacenar en una variable usuario el resultado de la búsqueda y además lo almacenamos
+		 * el resultado también en el Usuario de App*/
+		Usuario usuario = new UsuarioManager().findById(con, userText.getText(), passwordText.getText());
+			if (usuario != null) {
+			App.setUsuario(usuario);
 			App.setRoot("rutinas");
 			nombreUsuario = userText.getText();
 		} else {

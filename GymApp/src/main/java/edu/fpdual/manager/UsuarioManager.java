@@ -31,6 +31,7 @@ public class UsuarioManager {
 			
 			ResultSet result = stmt.executeQuery(sql);
 			result.beforeFirst();
+			result.next();
 			Usuario usuario = new Usuario(result);
 			return usuario.getCodigo();
 		}catch(SQLException e) {
@@ -39,7 +40,7 @@ public class UsuarioManager {
 		}
 	}
 
-	public boolean findById(Connection con, String nombre, String contraseña) {
+	public Usuario findById(Connection con, String nombre, String contraseña) {
 		try(PreparedStatement stmt = con.prepareStatement("Select * from Usuario where NomUsu = ? and contraseña = ?")){
 			stmt.setString(1, nombre);
 			stmt.setString(2, contraseña);
@@ -48,17 +49,17 @@ public class UsuarioManager {
 			result.next();
 			Usuario usuario = new Usuario(result);
 			if(usuario.getNombre().equals(nombre)  && usuario.getContraseña().equals(contraseña) ) {
-				return true;
+				return usuario;
 				
 			}else {
-				return false;
+				return null;
 				
 				
 			}
 
 		}catch(SQLException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
 	}
 	
