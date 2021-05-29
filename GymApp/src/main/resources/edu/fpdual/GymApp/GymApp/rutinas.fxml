@@ -16,7 +16,7 @@
             </Label>
             <Button fx:id="nuevaRutina" layoutX="82.0" layoutY="503.0" mnemonicParsing="false" onAction="#cambiarNuevaRutina" text="Nueva Rutina" />
             <Button fx:id="volverALogin" layoutX="230.0" layoutY="393.0" mnemonicParsing="false" onAction="#cambiarLogin" prefHeight="31.0" prefWidth="76.0" text="Volver" />
-            <TableView fx:id="tblRutinas" layoutX="21.0" layoutY="171.0" prefHeight="200.0" prefWidth="502.0">
+            <TableView fx:id="tblRutinas" layoutX="21.0" layoutY="171.0" onMouseClicked="#cambiarEjerciciosPorDias" prefHeight="200.0" prefWidth="502.0">
                <columns>
                   <TableColumn fx:id="columnRutinas" prefWidth="501.0" text="Rutinas disponibles" />
                </columns></TableView>

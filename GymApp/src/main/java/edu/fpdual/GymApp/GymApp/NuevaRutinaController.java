@@ -159,7 +159,7 @@ public class NuevaRutinaController implements Initializable {
 		try(Connection con = new Conector().getMySqlConnection()){
 			int codigoRutina = new RutinaManager().findIdByName(con,App.getNombreRutinaPorFavor());
 			System.out.println(codigoRutina);
-		new RutinaEjercicioManager().nuevaRutinaEjercicio(con,codigoRutina   ,tblEjercicio.getSelectionModel().getSelectedItem().getCodigoEjercicio(), repeticiones.getText(), descanso.getText(), Integer.parseInt(descanso.getText()), comboDias.getValue(),tblEjercicio.getSelectionModel().getSelectedItem().getNombreEjercicio());	
+		new RutinaEjercicioManager().nuevaRutinaEjercicio(con,codigoRutina   ,tblEjercicio.getSelectionModel().getSelectedItem().getCodigoEjercicio(), repeticiones.getText(), descanso.getText(), Integer.parseInt(descanso.getText()), comboDias.getValue(),tblEjercicio.getSelectionModel().getSelectedItem().getNombreEjercicio(),App.getUsuario().getCodigo());	
 		}
 		
 	}

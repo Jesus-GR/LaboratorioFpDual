@@ -34,6 +34,11 @@ public class Rutinas implements Initializable {
 		App.setRoot("nuevaRutina");
 	}
 	
+	@FXML
+	private void cambiarEjerciciosPorDias() throws IOException {
+		App.setRoot("ejerciciosPorDias");
+	}
+	
 	@FXML 
 	private void cambiarLogin() throws IOException {
 		App.setRoot("Login");

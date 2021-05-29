@@ -78,7 +78,7 @@ public class main {
 		
 	//System.out.println(new RutinaManager().fillRutineByCodUsu(con, 1));
 		
-		new RutinaEjercicioManager().rutinaSemanal(con, "Miercoles").forEach(s -> System.out.println(s));
+		new RutinaEjercicioManager().mostrarTablaEjercicios(con, "Lunes",1).forEach(a -> System.out.println(a));
 		
 
 		
