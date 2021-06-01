@@ -6,15 +6,23 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Conector.
+ */
 public class Conector {
 
+	/** The prop. */
 	/*
 	 * Creamos un objeto de tipo Properties. La clase estándar de Properties permite
 	 * almacenar información con una especie de índice y su valor
 	 */
 	Properties prop = new Properties();
 
-	/* Creamos el constructor */
+	/**
+	 * Creamos el conector
+	 */
+
 	public Conector() {
 		try {
 			/* En la clase de prop, cargame dentro la configuración en forma de stream */
@@ -24,8 +32,15 @@ public class Conector {
 		}
 	}
 
-	/* Ahora creamos un método para hacer la conexión */
 
+	/**
+	 * Ahora creamos un método para hacer la conexión 
+	 * Gets the my sql connection.
+	 *
+	 * @return la conexión sql
+	 * @throws SQLException the SQL exception
+	 * @throws ClassNotFoundException the class not found exception
+	 */
 	public Connection getMySqlConnection() throws SQLException, ClassNotFoundException  {
 
 		try {
@@ -49,9 +64,12 @@ public class Conector {
 		}
 	}
 
-	/*
-	 * Este método nos retorna un String, por eso el to String del final y es un
+	/**
+	 * Gets the url.
+	 *
+	 *Este método nos retorna un String, por eso el to String del final y es un
 	 * StringBuilder y le vamos concatenando todo el texto de la url
+	 * @return the url
 	 */
 	private String getURL() {
 		return new StringBuilder().append(prop.getProperty(MySqlConstant.PREFIX))

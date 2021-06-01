@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 
 import edu.fpdual.conector.Conector;
+import edu.fpdual.dao.Usuario;
 import edu.fpdual.manager.UsuarioManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,38 +15,63 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NuevoUsuarioController.
+ */
 public class NuevoUsuarioController {
 
+	/** The nuevo nombre. */
 	@FXML
 	private TextField nuevoNombre;
+	
+	/** The nuevo primer apellido. */
 	@FXML
 	private TextField nuevoPrimerApellido;
+	
+	/** The nuevo segundo apellido. */
 	@FXML
 	private TextField nuevoSegundoApellido;
+	
+	/** The nueva direccion. */
 	@FXML
 	private TextField nuevaDireccion;
+	
+	/** The nueva fecha nac. */
 	@FXML
 	private DatePicker nuevaFechaNac;
+	
+	/** The nuevo peso. */
 	@FXML
 	private TextField nuevoPeso;
+	
+	/** The nueva altura. */
 	@FXML
 	private TextField nuevaAltura;
+	
+	/** The nueva contraseña. */
 	@FXML
 	private PasswordField nuevaContraseña;
 
+	/**
+	 * Insert usuario.
+	 *
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 
 	public void insertUsuario() throws ClassNotFoundException, SQLException, IOException {
 		
 		try(Connection con = new Conector().getMySqlConnection()) {
-			new UsuarioManager().insertUsuario(con, nuevoNombre.getText(), nuevaContraseña.getText(),
+			 new UsuarioManager().insertUsuario(con, nuevoNombre.getText(), nuevaContraseña.getText(),
 					nuevoPrimerApellido.getText(), nuevoSegundoApellido.getText(), nuevaDireccion.getText(),
 					nuevaFechaNac.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), nuevoPeso.getText(), nuevaAltura.getText());
-			App.setRoot("nuevaRutina");
+			App.setRoot("Login");
 		} catch (Exception e) {
 			e.printStackTrace();
 			String error = "";
-			
 			if(nuevoNombre == null) {
 				error += "El nombre no puede estar vacío";
 			}else if(nuevaContraseña == null) {
@@ -69,6 +95,11 @@ public class NuevoUsuarioController {
 
 	}
 	
+	/**
+	 * Volver A login.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	public void volverALogin() throws IOException {
 		App.setRoot("Login");

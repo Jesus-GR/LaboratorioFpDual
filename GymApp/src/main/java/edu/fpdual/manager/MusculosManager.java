@@ -9,8 +9,18 @@ import java.util.List;
 
 import edu.fpdual.dao.Musculos;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MusculosManager.
+ */
 public class MusculosManager {
 
+	/**
+	 * Find all.
+	 *
+	 * @param con the con
+	 * @return the list
+	 */
 	public List<Musculos> findAll(Connection con) {
 		try(Statement stmt = con.createStatement()){
 			ResultSet result = stmt.executeQuery("SELECT * FROM MUSCULOS");

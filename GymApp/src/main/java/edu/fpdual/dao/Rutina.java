@@ -10,18 +10,34 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+// TODO: Auto-generated Javadoc
+
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 public class Rutina {
 	
+	/** The cod rut. */
 	int codRut;
+	
+	/** The nom rut. */
 	String nomRut;
+	
+	/** The codigo. */
 	int codigo;
+	
+	/** The Fech ini. */
 	Timestamp FechIni;
+	
+	/** The Fech fin. */
 	Timestamp FechFin;
 
+	/**
+	 * Instantiates a new rutina.
+	 *
+	 * @param result the result
+	 */
 	public Rutina(ResultSet result) {
 		
 		try {
@@ -37,6 +53,11 @@ public class Rutina {
 		
 	}
 	
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	public String toString() {
 		return this.nomRut;
 	}

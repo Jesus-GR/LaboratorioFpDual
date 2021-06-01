@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="888.0" style="-fx-background-color: aqua;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.NuevaRutinaController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="888.0" style="-fx-background-color: aqua; -fx-border-color: violet; -fx-border-width: 15;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.NuevaRutinaController">
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="888.0" style="-: ;">
          <children>
@@ -17,7 +17,7 @@
             <Label layoutX="458.0" layoutY="83.0" text="Fin" />
             <Label layoutX="174.0" layoutY="293.0" text="Selecciona el dia de la semana" />
             <Label layoutX="575.0" layoutY="293.0" text="Selecciona grupo muscular" />
-            <AnchorPane layoutX="15.0" layoutY="421.0" prefHeight="221.0" prefWidth="859.0" style="-fx-background-color: aqua;">
+            <AnchorPane layoutX="15.0" layoutY="421.0" prefHeight="221.0" prefWidth="827.0" style="-fx-background-color: aqua;">
                <children>
                   <TableView fx:id="tblEjercicio" layoutX="32.0" layoutY="10.0" onMouseClicked="#guardarEjercicio" prefHeight="282.0" prefWidth="780.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="10.0">
                      <columns>
@@ -29,7 +29,7 @@
             <ComboBox fx:id="comboDias" layoutX="174.0" layoutY="328.0" prefWidth="150.0" />
             <TextField fx:id="nombreRutina" layoutX="351.0" layoutY="47.0" />
             <Label layoutX="236.0" layoutY="52.0" text="Nombre Rutina" />
-            <Button fx:id="guardar" layoutX="399.0" layoutY="650.0" mnemonicParsing="false" onAction="#volverARutinas" text="Guardar" />
+            <Button fx:id="guardar" layoutX="250.0" layoutY="642.0" mnemonicParsing="false" onAction="#volverARutinas" text="Guardar" />
             <Label layoutX="191.0" layoutY="387.0" prefHeight="21.0" prefWidth="91.0" text="Repeticiones" />
             <TextField fx:id="repeticiones" layoutX="322.0" layoutY="382.0" prefHeight="31.0" prefWidth="49.0" />
             <Label layoutX="399.0" layoutY="387.0" prefHeight="21.0" prefWidth="74.0" text="Descanso" />
@@ -44,6 +44,7 @@
                </font>
             </Label>
             <Button fx:id="dfd" layoutX="591.0" layoutY="169.0" mnemonicParsing="false" onAction="#mirarUsuario" text="Button" />
+            <Button fx:id="volverPerfil" layoutX="460.0" layoutY="642.0" mnemonicParsing="false" onAction="#volverUsuario" prefHeight="31.0" prefWidth="91.0" text="Volver" />
          </children>
       </AnchorPane>
    </children>

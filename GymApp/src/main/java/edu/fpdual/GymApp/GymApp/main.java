@@ -70,7 +70,7 @@ public class main {
 //		
 //		new UsuarioManager().insertUsuario(con, usuario.getNombre(),usuario.getContraseña(), usuario.getApellido1(), usuario.getApellido2(), usuario.getDireccion(), usuario.getFechaNacimiento(),usuario.getPeso(),  usuario.getAltura());
 		
-		//System.out.println(new UsuarioManager().findById(con, "ADFASDFA", "1234"));
+		System.out.println(new UsuarioManager().findById(con, "ADFASDFA", "1234"));
 		
 		//new EjercicioManager().findByMuscle(con, "Dorsales").forEach(ejercicios -> System.out.println(ejercicios));
 		
@@ -78,7 +78,7 @@ public class main {
 		
 	//System.out.println(new RutinaManager().fillRutineByCodUsu(con, 1));
 		
-		new RutinaEjercicioManager().mostrarTablaEjercicios(con, "Lunes",1).forEach(a -> System.out.println(a));
+		//new RutinaEjercicioManager().mostrarTablaEjercicios(con, "Lunes",1).forEach(a -> System.out.println(a));
 		
 
 		

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.EjerciciosPorDiasController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="535.0" style="-fx-background-color: aqua; -fx-border-color: violet; -fx-border-width: 15;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.EjerciciosPorDiasController">
    <children>
       <AnchorPane prefHeight="749.0" prefWidth="535.0">
          <children>
@@ -16,17 +16,18 @@
                   <Font size="33.0" />
                </font>
             </Label>
-            <Button fx:id="nuevaRutina" layoutX="193.0" layoutY="344.0" mnemonicParsing="false" text="Finalizar Rutina" />
+            <Button fx:id="nuevaRutina" layoutX="91.0" layoutY="356.0" mnemonicParsing="false" onAction="#finalizarEntrenamiento" text="Finalizar entrenamiento" />
             <ComboBox fx:id="diaSemanaCombobox" layoutX="179.0" layoutY="96.0" onAction="#mostrarTabla" prefWidth="150.0" />
-            <TableView fx:id="tablaEjercicios" layoutX="35.0" layoutY="137.0" prefHeight="200.0" prefWidth="475.0">
+            <TableView fx:id="tablaEjercicios" layoutX="18.0" layoutY="137.0" prefHeight="200.0" prefWidth="475.0">
                <columns>
                   <TableColumn fx:id="columnaNombre" prefWidth="75.0" text="Nombre " />
                   <TableColumn fx:id="columnaPeso" prefWidth="99.0" text="Peso" />
                   <TableColumn fx:id="columnaRepeticiones" prefWidth="129.0" text="Repeticiones" />
-                  <TableColumn fx:id="columnaDescanso" prefWidth="95.0" text="Descanso" />
-                  <TableColumn fx:id="columnaX" prefWidth="76.0" text="x" />
+                  <TableColumn fx:id="columnaDescanso" prefWidth="71.0" text="Descanso" />
+                  <TableColumn fx:id="columnaCheck" prefWidth="100.0" text="Completo" />
                </columns>
             </TableView>
+            <Button fx:id="volverRutinas" layoutX="316.0" layoutY="356.0" mnemonicParsing="false" onAction="#volverARutinas" text="Volver" />
          </children>
       </AnchorPane>
    </children>

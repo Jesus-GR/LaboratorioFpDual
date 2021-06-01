@@ -21,11 +21,24 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+// TODO: Auto-generated Javadoc
+
 @Getter
 @Setter
+
 @ToString
 public class RutinaManager {
 
+	/**
+	 * Adds the rutine.
+	 *
+	 * @param con the con
+	 * @param nombre the nombre
+	 * @param codigoUsuario the codigo usuario
+	 * @param FechIni the fech ini
+	 * @param FechFin the fech fin
+	 * @return the int
+	 */
 	public int addRutine(Connection con, String nombre, int codigoUsuario, String FechIni, String FechFin) {
 		try (PreparedStatement stmt = con
 				.prepareStatement("Insert into rutina values ((SELECT MAX(CodRut)+1 from rutina as max),?,?,?,?)")) {
@@ -41,9 +54,17 @@ public class RutinaManager {
 		}
 	}
 
-	public int deleteRutine(Connection con) {
+	/**
+	 * Delete rutine.
+	 *
+	 * @param con the con
+	 * @param codigoRutina the codigo rutina
+	 * @return the int
+	 */
+	public int deleteRutine(Connection con, int codigoRutina) {
 		try (Statement stmt = con.createStatement()) {
-			int result = stmt.executeUpdate("Delete * from Rutina");
+			String sql = String.format("Delete  from Rutina where CodRut = %d", codigoRutina);
+			int result = stmt.executeUpdate(sql);
 			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -52,6 +73,12 @@ public class RutinaManager {
 
 	}
 
+	/**
+	 * Find all.
+	 *
+	 * @param con the con
+	 * @return the list
+	 */
 	public List<Rutina> findAll(Connection con) {
 		try (Statement stmt = con.createStatement()) {
 			ResultSet result = stmt.executeQuery("SELECT * FROM RUTINA");
@@ -68,6 +95,14 @@ public class RutinaManager {
 		}
 	}
 
+	/**
+	 * Find id by name.
+	 *
+	 * @param con the con
+	 * @param nombre the nombre
+	 * @return the int
+	 * @throws SQLException the SQL exception
+	 */
 	public int findIdByName(Connection con, String nombre) throws SQLException {
 		try (Statement stmt = con.createStatement()) {
 			String sql = String.format("Select CodRut from rutina where NomRut = '%s'", nombre);
@@ -85,6 +120,13 @@ public class RutinaManager {
 		}
 	}
 	
+	/**
+	 * Fill rutine by cod usu.
+	 *
+	 * @param con the con
+	 * @param codUsu the cod usu
+	 * @return the list
+	 */
 	public List<Rutina> fillRutineByCodUsu(Connection con, int codUsu){
 		try(Statement stmt = con.createStatement()){
 			String sql = String.format("Select * from rutina where Usuario_CodUsu = %d ", codUsu);

@@ -20,11 +20,21 @@ import javafx.util.Callback;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+// TODO: Auto-generated Javadoc
+
 @Getter
 @Setter
+
 @ToString
 public class UsuarioManager {
 	
+	/**
+	 * Obtener codigo usuario.
+	 *
+	 * @param con the con
+	 * @param nombre the nombre
+	 * @return the int
+	 */
 	public int obtenerCodigoUsuario(Connection con, String nombre) {
 		try(Statement stmt = con.createStatement()){
 			String sql = String.format("SELECT CodUsu from usuario where NomUsu = '%s'", nombre);
@@ -40,15 +50,48 @@ public class UsuarioManager {
 		}
 	}
 
-	public Usuario findById(Connection con, String nombre, String contraseña) {
-		try(PreparedStatement stmt = con.prepareStatement("Select * from Usuario where NomUsu = ? and contraseña = ?")){
-			stmt.setString(1, nombre);
+	/**
+	 * Find by id.
+	 *
+	 * @param con the con
+	 * @param nombre the nombre
+	 * @param contraseña the contraseña
+	 * @return the usuario
+	 */
+	public Usuario findById(Connection con, String email, String contraseña) {
+		try(PreparedStatement stmt = con.prepareStatement("Select * from Usuario where Email = ? and contraseña = ?")){
+			stmt.setString(1, email);
 			stmt.setString(2, contraseña);
 			ResultSet result = stmt.executeQuery();
 			result.beforeFirst();
 			result.next();
 			Usuario usuario = new Usuario(result);
-			if(usuario.getNombre().equals(nombre)  && usuario.getContraseña().equals(contraseña) ) {
+			System.out.println(usuario);
+			if(usuario.getEmail().equals(email)  && usuario.getContraseña().equals(contraseña) ) {
+				return usuario;
+				
+			}else {
+				return null;
+				
+				
+			}
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public Usuario findByEmail(Connection con, String email, String contraseña) {
+		try(PreparedStatement stmt = con.prepareStatement("Select * from Usuario where Email = ? and contraseña = ?")){
+			stmt.setString(1, email);
+			stmt.setString(2, contraseña);
+			ResultSet result = stmt.executeQuery();
+			result.beforeFirst();
+			result.next();
+			Usuario usuario = new Usuario(result);
+			System.out.println(usuario);
+			if(usuario.getEmail() != null ) {
 				return usuario;
 				
 			}else {
@@ -83,7 +126,13 @@ public class UsuarioManager {
 //	}
 	
 	
-	public List<Usuario> findAll (Connection con){
+	/**
+ * Find all.
+ *
+ * @param con the con
+ * @return the list
+ */
+public List<Usuario> findAll (Connection con){
 		try(Statement stmt = con.createStatement()){
 			ResultSet result = stmt.executeQuery("SELECT * FROM USUARIO");
 			result.beforeFirst();
@@ -100,13 +149,27 @@ public class UsuarioManager {
 		return null;
 	}
 	
-	public int insertUsuario(Connection con,String nombre, String contraseña, String ape1, String ape2, String direccion, String fecha, String peso, String altura) {
+	/**
+	 * Insert usuario.
+	 *
+	 * @param con the con
+	 * @param nombre the nombre
+	 * @param contraseña the contraseña
+	 * @param ape1 the ape 1
+	 * @param ape2 the ape 2
+	 * @param direccion the direccion
+	 * @param fecha the fecha
+	 * @param peso the peso
+	 * @param altura the altura
+	 * @return the int
+	 */
+	public int insertUsuario(Connection con,String nombre, String contraseña, String ape1, String ape2, String email, String fecha, String peso, String altura) {
 		try(PreparedStatement stmt = con.prepareStatement("insert usuario values ((Select Max(CodUsu) + 1 from usuario as max),?,?,?,?,?,?,?,?);")){
 			stmt.setString(1, nombre);
 			stmt.setString(2, contraseña);
 			stmt.setString(3, ape1);
 			stmt.setString(4, ape2);
-			stmt.setString(5, direccion);
+			stmt.setString(5, email);
 			stmt.setString(6, fecha);
 			stmt.setString(7, peso);
 			stmt.setString(8, altura);
@@ -120,6 +183,13 @@ public class UsuarioManager {
 		
 	}
 	
+	/**
+	 * Delete usuario.
+	 *
+	 * @param con the con
+	 * @param codUsu the cod usu
+	 * @return the int
+	 */
 	public int deleteUsuario(Connection con, int codUsu){
 		try(Statement stmt = con.createStatement()){
 			String sql = String.format("Delete  from Usuario where CodUsu =  %d", codUsu);
@@ -129,6 +199,28 @@ public class UsuarioManager {
 		}catch(SQLException e) {
 			e.printStackTrace();
 			return 0;
+		}
+	}
+	
+	/**
+	 * Find by name.
+	 *
+	 * @param con the con
+	 * @param nombre the nombre
+	 * @return the usuario
+	 */
+	public Usuario findByName(Connection con, String nombre) {
+		try(Statement stmt = con.createStatement()){
+			String sql = String.format("Delete  from Usuario where CodUsu =  '%s'", nombre);
+			ResultSet result = stmt.executeQuery(sql);
+			result.beforeFirst();
+			result.next();
+			Usuario usuario = new Usuario(result);
+			return usuario;
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

@@ -26,22 +26,43 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RutinaEjercicioControlador.
+ */
 public class RutinaEjercicioControlador implements Initializable {
 
+	/** The combo box. */
 	@FXML
 	ComboBox<Musculos> comboBox;
+	
+	/** The combo dias. */
 	@FXML
 	ComboBox<String> comboDias;
+	
+	/** The tabla musculos. */
 	@FXML
 	TableView<Ejercicio> tablaMusculos;
+	
+	/** The nombre rutina. */
 	@FXML
 	TextField nombreRutina;
+	
+	/** The code column. */
 	@FXML
 	TableColumn<Ejercicio, Integer> codeColumn;
+	
+	/** The nom column. */
 	@FXML
 	TableColumn<Ejercicio, String> nomColumn;
 	
 
+	/**
+	 * Initialize.
+	 *
+	 * @param location the location
+	 * @param resources the resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -71,10 +92,16 @@ public class RutinaEjercicioControlador implements Initializable {
 	 
 	}
 	
+	/**
+	 * Combo action.
+	 */
 	public void comboAction() {
 	    System.out.println("Selected value : " + comboBox.getValue().getClass());
 	}
 	
+	/**
+	 * Lista ejercicios.
+	 */
 	public void listaEjercicios() {
 		try(Connection con = new Conector().getMySqlConnection()){
 			List<Ejercicio>ejercicios = new ArrayList<>();

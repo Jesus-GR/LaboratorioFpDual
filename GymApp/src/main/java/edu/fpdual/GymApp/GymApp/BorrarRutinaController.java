@@ -8,11 +8,8 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import edu.fpdual.conector.Conector;
-import edu.fpdual.dao.Ejercicio;
-import edu.fpdual.dao.Musculos;
 import edu.fpdual.dao.Rutina;
-import edu.fpdual.manager.EjercicioManager;
-import edu.fpdual.manager.MusculosManager;
+import edu.fpdual.manager.RutinaEjercicioManager;
 import edu.fpdual.manager.RutinaManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,61 +21,51 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Rutinas.
+ * The Class BorrarRutinaController.
  */
-public class Rutinas implements Initializable {
+public class BorrarRutinaController  implements Initializable{
+	
 
-	/** The tbl rutinas. */
+	/** The tbl borrar rutina. */
 	@FXML
-	TableView<Rutina> tblRutinas;
+	TableView<Rutina> tblBorrarRutina;
 	
-	/** The column rutinas. */
+	/** The column borrar rutina. */
 	@FXML
-	TableColumn<Rutina, String> columnRutinas;
-	
-	/**
-	 * Cambiar nueva rutina.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	@FXML
-	private void cambiarNuevaRutina() throws IOException {
-		App.setRoot("nuevaRutina");
-	}
-	
-	/**
-	 * Cambiar ejercicios por dias.
-	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	@FXML
-	private void cambiarEjerciciosPorDias() throws IOException {
-		App.setRoot("ejerciciosPorDias");
-		int codRut = tblRutinas.getSelectionModel().getSelectedItem().getCodRut();
-		App.setCodRutina(codRut);
-		System.out.println(codRut);
-	}
+	TableColumn<Rutina, String> columnBorrarRutina;
 	
 	/**
 	 * Volver perfil.
 	 *
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	@FXML 
-	private void volverPerfil() throws IOException {
+	@FXML
+	public void volverPerfil() throws IOException {
 		App.setRoot("perfil");
 	}
 	
+
+	
 	/**
-	 * Ir A borrar.
+	 * Delete rutine.
 	 *
 	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ClassNotFoundException the class not found exception
 	 */
 	@FXML
-	private void irABorrar() throws IOException {
-		App.setRoot("borrarRutina");
+	public void deleteRutine() throws IOException, ClassNotFoundException {
+		try(Connection con = new Conector().getMySqlConnection()){
+				int codRut = tblBorrarRutina.getSelectionModel().getSelectedItem().getCodRut();
+			new RutinaEjercicioManager().deleteRutinaEjercicio(con, codRut);
+			
+			new RutinaManager().deleteRutine(con, codRut);
+	App.setRoot("perfil");
+	}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
-	
+
 	/**
 	 * Initialize.
 	 *
@@ -88,10 +75,11 @@ public class Rutinas implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try (Connection con = new Conector().getMySqlConnection()) {
-			this.columnRutinas.setCellValueFactory(new PropertyValueFactory<>("nomRut"));
-			
+			this.columnBorrarRutina.setCellValueFactory(new PropertyValueFactory<>("nomRut"));
 			ObservableList<Rutina> rutinas = new RutinaManager().fillRutineByCodUsu(con, App.getUsuario().getCodigo()).stream().collect(Collectors.toCollection(FXCollections::observableArrayList));
-			tblRutinas.setItems(rutinas);
+			tblBorrarRutina.setItems(rutinas);
+
+			
 			
 			
 		}catch (NullPointerException e) {
@@ -104,9 +92,10 @@ public class Rutinas implements Initializable {
 			
 			e1.printStackTrace();
 		}
-
-	}
-	
 		
 	}
 	
+		
+	
+
+}

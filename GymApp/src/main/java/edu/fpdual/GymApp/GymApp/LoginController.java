@@ -18,22 +18,42 @@ import javafx.scene.input.KeyEvent;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+// TODO: Auto-generated Javadoc
+
 @Getter
 @Setter
+
 @NoArgsConstructor
 public class LoginController {
 
+	/** The user text. */
 	@FXML
 	 private TextField userText;
+	
+	/** The password text. */
 	@FXML
 	private PasswordField passwordText;
 
+	/**
+	 * Switch to new user.
+	 *
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void switchToNewUser() throws IOException {
 		App.setRoot("nuevoUsuario");
 	}
 
+	/** The nombre usuario. */
 	String nombreUsuario;
+	
+	/**
+	 * Login.
+	 *
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	
 	private void login() throws ClassNotFoundException, SQLException, IOException {
@@ -41,25 +61,34 @@ public class LoginController {
 		
 		/*Utilizamos el método UsuarioManager().findById para almacenar en una variable usuario el resultado de la búsqueda y además lo almacenamos
 		 * el resultado también en el Usuario de App*/
-		Usuario usuario = new UsuarioManager().findById(con, userText.getText(), passwordText.getText());
-			if (usuario != null) {
+		Usuario usuario = new UsuarioManager().findByEmail(con, userText.getText(), passwordText.getText());
+			if (usuario != null ) {
 			App.setUsuario(usuario);
-			App.setRoot("rutinas");
-			nombreUsuario = userText.getText();
+			App.setRoot("perfil");
 		} else {
 			Alert alerta = new Alert(AlertType.INFORMATION);
-			alerta.setContentText("El nombre de usuario o la contraseña no son correctos");
-			alerta.showAndWait();
+			alerta.setContentText("El email o la contraseña no son correctos");
+			alerta.show();
 
 		}
 
 	}
 
+	/**
+	 * Enter.
+	 *
+	 * @param key the key
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@FXML
 	public void enter(KeyEvent key) throws IOException, ClassNotFoundException, SQLException {
 		if (key.getCharacter().equals("\r")) {
 			login();
 		}
 	}
+	
+	
 
 }
