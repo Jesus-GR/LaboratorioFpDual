@@ -74,7 +74,7 @@ class pruebaJUnit {
 	}
 	
 	@Test
-	public static void main() {
+	public  void main() {
 		try(Connection con = new Conector().getMySqlConnection()){
 			new UsuarioManager().findAll(con).forEach(s -> System.out.println(s));
 		}catch (SQLException e) {
@@ -95,7 +95,7 @@ class pruebaJUnit {
 		 * el resultado también en el Usuario de App*/
 		Usuario user = new UsuarioManager().findByEmail(con, usuario.getEmail(), usuario.getContraseña());
 			
-		assumeTrue(user.getEmail() != null && usuario.getContraseña() != null);
+		assertTrue(user.getEmail() != null && usuario.getContraseña() != null);
 
 	}
 	
