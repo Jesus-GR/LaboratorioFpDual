@@ -71,7 +71,9 @@ public class NuevoUsuarioController {
 					nuevoPrimerApellido.getText(), nuevoSegundoApellido.getText(), nuevaDireccion.getText(),
 					nuevaFechaNac.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), nuevoPeso.getText(),
 					nuevaAltura.getText()) != 0) {
+				
 				App.setRoot("Login");
+				
 			}else {
 				String error = "";
 				if (nuevoNombre.getText().isEmpty()) {

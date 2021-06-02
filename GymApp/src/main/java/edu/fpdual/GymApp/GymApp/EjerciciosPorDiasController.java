@@ -123,7 +123,7 @@ public class EjerciciosPorDiasController implements Initializable {
 			alerta.setContentText("Aún no has finalizado la rutina al completo, vuelve al gym!!");
 			alerta.show();
 		}else {
-			new Sender().send("cuentaejerciciojava@gmail.com", "jgutiramirez92@gmail.com", "¡Enhorabuena!", "Has terminado tu rutina correctamente");
+			new Sender().send("cuentaejerciciojava@gmail.com", App.getUsuario().getEmail(), "¡Enhorabuena!", "Has terminado tu rutina correctamente");
 			App.setRoot("rutinas");
 		}
 		

@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="623.0" style="-fx-background-color: aqua; -fx-border-color: violet; -fx-border-width: 14;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.BorrarRutinaController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="623.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 14;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.BorrarRutinaController">
    <children>
       <AnchorPane prefHeight="574.0" prefWidth="754.0">
          <children>
@@ -15,7 +15,7 @@
                </font>
             </Label>
             <Button fx:id="vovlerARutinas" layoutX="260.0" layoutY="401.0" mnemonicParsing="false" onAction="#volverPerfil" prefHeight="31.0" prefWidth="76.0" text="Volver" />
-            <TableView fx:id="tblBorrarRutina" layoutX="64.0" layoutY="174.0" onMouseClicked="#deleteRutine" prefHeight="200.0" prefWidth="502.0" style="-fx-background-color: yellow;">
+            <TableView fx:id="tblBorrarRutina" layoutX="64.0" layoutY="174.0" onMouseClicked="#deleteRutine" prefHeight="200.0" prefWidth="502.0" style="-fx-background-color: grey;">
                <columns>
                   <TableColumn fx:id="columnBorrarRutina" prefWidth="501.0" text="Borrar Rutinas" />
                </columns></TableView>

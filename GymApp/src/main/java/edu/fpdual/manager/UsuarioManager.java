@@ -105,24 +105,7 @@ public class UsuarioManager {
 		}
 	}
 	
-	
-//	public List<Usuario> findById(Connection con, String nombre, String contraseña) {
-//		try(PreparedStatement stmt = con.prepareStatement("Select * from Usuario where NomUsu = ? and Contraseña = ? ")){
-//			stmt.setString(1, nombre);
-//			stmt.setString(2, contraseña);
-//			ResultSet result = stmt.executeQuery();
-//			result.beforeFirst();
-//			List<Usuario> usuario = new ArrayList<>();
-//			while(result.next()){
-//				usuario.add(new Usuario(result));
-//			}
-//			
-//			return usuario;
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-//	}
+
 	
 	
 	/**
@@ -165,7 +148,7 @@ public List<Usuario> findAll (Connection con){
 	 */
 	public int insertUsuario(Connection con,String nombre, String contraseña, String ape1, String ape2, String email, String fecha, String peso, String altura) throws ErrorNuevoUsuario, SQLException {
 		
-			try(PreparedStatement stmt = con.prepareStatement("insert usuario values ((Select Max(CodUsu) + 1 from usuario as max),?,?,?,?,?,?,?,?);")){
+			try(PreparedStatement stmt = con.prepareStatement("insert into usuario values ((Select Max(CodUsu) + 1 from usuario as max),?,?,?,?,?,?,?,?);")){
 			stmt.setString(1, nombre);
 			stmt.setString(2, contraseña);
 			stmt.setString(3, ape1);
@@ -176,9 +159,11 @@ public List<Usuario> findAll (Connection con){
 			stmt.setString(8, altura);
 			
 			if(!email.contains("@") || email.isEmpty() || nombre.isEmpty() || contraseña.isEmpty() || ape1.isEmpty() || ape2.isEmpty() || peso.isEmpty() || altura.isEmpty()){
+				
 				return 0;	
 			}else {
 				int result = stmt.executeUpdate();
+				System.out.println(result);
 				return result;
 			}
 			

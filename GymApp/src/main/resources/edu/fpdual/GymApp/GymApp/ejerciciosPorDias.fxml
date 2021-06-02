@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="535.0" style="-fx-background-color: aqua; -fx-border-color: violet; -fx-border-width: 15;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.EjerciciosPorDiasController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="535.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 15;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.EjerciciosPorDiasController">
    <children>
       <AnchorPane prefHeight="749.0" prefWidth="535.0">
          <children>
@@ -18,7 +18,7 @@
             </Label>
             <Button fx:id="nuevaRutina" layoutX="91.0" layoutY="356.0" mnemonicParsing="false" onAction="#finalizarEntrenamiento" text="Finalizar entrenamiento" />
             <ComboBox fx:id="diaSemanaCombobox" layoutX="179.0" layoutY="96.0" onAction="#mostrarTabla" prefWidth="150.0" />
-            <TableView fx:id="tablaEjercicios" layoutX="18.0" layoutY="137.0" prefHeight="200.0" prefWidth="475.0">
+            <TableView fx:id="tablaEjercicios" layoutX="18.0" layoutY="137.0" prefHeight="200.0" prefWidth="475.0" style="-fx-background-color: grey;">
                <columns>
                   <TableColumn fx:id="columnaNombre" prefWidth="75.0" text="Nombre " />
                   <TableColumn fx:id="columnaPeso" prefWidth="99.0" text="Peso" />

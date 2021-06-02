@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="888.0" style="-fx-background-color: aqua; -fx-border-color: violet; -fx-border-width: 15;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.NuevaRutinaController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="888.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 15;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fpdual.GymApp.GymApp.NuevaRutinaController">
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="888.0" style="-: ;">
          <children>
@@ -17,7 +17,7 @@
             <Label layoutX="458.0" layoutY="83.0" text="Fin" />
             <Label layoutX="174.0" layoutY="293.0" text="Selecciona el dia de la semana" />
             <Label layoutX="575.0" layoutY="293.0" text="Selecciona grupo muscular" />
-            <AnchorPane layoutX="15.0" layoutY="421.0" prefHeight="221.0" prefWidth="827.0" style="-fx-background-color: aqua;">
+            <AnchorPane layoutX="15.0" layoutY="421.0" prefHeight="221.0" prefWidth="827.0" style="-fx-background-color: white;">
                <children>
                   <TableView fx:id="tblEjercicio" layoutX="32.0" layoutY="10.0" onMouseClicked="#guardarEjercicio" prefHeight="282.0" prefWidth="780.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="10.0">
                      <columns>
