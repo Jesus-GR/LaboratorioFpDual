@@ -62,7 +62,8 @@ public class LoginController {
 		/*Utilizamos el método UsuarioManager().findById para almacenar en una variable usuario el resultado de la búsqueda y además lo almacenamos
 		 * el resultado también en el Usuario de App*/
 		Usuario usuario = new UsuarioManager().findByEmail(con, userText.getText(), passwordText.getText());
-			if (usuario != null ) {
+		System.out.println(usuario);
+			if (usuario.getEmail() != null && usuario.getEmail().contains("@")) {
 			App.setUsuario(usuario);
 			App.setRoot("perfil");
 		} else {

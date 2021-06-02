@@ -56,7 +56,6 @@ public class Rutinas implements Initializable {
 		App.setRoot("ejerciciosPorDias");
 		int codRut = tblRutinas.getSelectionModel().getSelectedItem().getCodRut();
 		App.setCodRutina(codRut);
-		System.out.println(codRut);
 	}
 	
 	/**

@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import edu.fpdual.conector.Conector;
 import edu.fpdual.dao.Usuario;
+import edu.fpdual.manager.RutinaEjercicioManager;
 import edu.fpdual.manager.RutinaManager;
 import edu.fpdual.manager.UsuarioManager;
 import javafx.collections.FXCollections;
@@ -86,12 +87,17 @@ public class PerfilController implements Initializable {
 	 * @throws ClassNotFoundException the class not found exception
 	 * @throws SQLException the SQL exception
 	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws InterruptedException 
 	 */
 	@FXML
-	public void borrarPerfil() throws ClassNotFoundException, SQLException, IOException {
+	public void borrarPerfil() throws ClassNotFoundException, SQLException, IOException, InterruptedException {
 		try(Connection con = new Conector().getMySqlConnection()){
-			new RutinaManager().deleteRutine(con, App.getUsuario().getCodigo());
+			new RutinaEjercicioManager().deleteRutinaEjercicioPorUsuarioFK(con, App.getUsuario().getCodigo());
+			Thread.sleep(1000);
+			new RutinaManager().deleteRutineCodUsu(con, App.getUsuario().getCodigo());
+			
 			new UsuarioManager().deleteUsuario(con, App.getUsuario().getCodigo());
+			Thread.sleep(1000);
 			App.setRoot("Login");
 		}
 		

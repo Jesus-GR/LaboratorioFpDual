@@ -90,7 +90,7 @@ public class EjerciciosPorDiasController implements Initializable {
 	 * @param <T> the generic type
 	 */
 	@FXML
-	public <T> void mostrarTabla() {
+	public  void mostrarTabla() {
 		try (Connection con = new Conector().getMySqlConnection()) {
 			this.columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombreEjercicio"));
 			this.columnaPeso.setCellValueFactory(new PropertyValueFactory<>("Peso"));
@@ -120,11 +120,10 @@ public class EjerciciosPorDiasController implements Initializable {
 	public void finalizarEntrenamiento() throws IOException {
 		if( tablaEjercicios.getItems().stream().filter(data -> !data.getCheck().isSelected()).findAny().isPresent()) {
 			Alert alerta = new Alert(AlertType.INFORMATION);
-			alerta.setContentText("Aún no has finalizado la rutina al completo, vuelve al gym vago!!");
+			alerta.setContentText("Aún no has finalizado la rutina al completo, vuelve al gym!!");
 			alerta.show();
 		}else {
-			Sender sender = new Sender();
-			sender.send("jgutiramirez92@gmail.com", "jgutiramirez92@gmail.com", "¡Enhorabuena!", "Has terminado tu rutina correctamente");
+			new Sender().send("cuentaejerciciojava@gmail.com", "jgutiramirez92@gmail.com", "¡Enhorabuena!", "Has terminado tu rutina correctamente");
 			App.setRoot("rutinas");
 		}
 		

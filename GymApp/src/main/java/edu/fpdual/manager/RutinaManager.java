@@ -72,6 +72,18 @@ public class RutinaManager {
 		}
 
 	}
+	
+	public int deleteRutineCodUsu(Connection con, int codUsu) {
+		try (Statement stmt = con.createStatement()) {
+			String sql = String.format("Delete  from Rutina where Usuario_CodUsu = %d", codUsu);
+			int result = stmt.executeUpdate(sql);
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+
+	}
 
 	/**
 	 * Find all.

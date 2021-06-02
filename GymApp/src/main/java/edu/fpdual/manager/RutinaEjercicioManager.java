@@ -150,5 +150,16 @@ public class RutinaEjercicioManager {
 			return 0;
 		}
 	}
+	
+	public int deleteRutinaEjercicioPorUsuarioFK(Connection con, int codUsuFK ) {
+		try(Statement stmt = con.createStatement()){
+			String sql = String.format("Delete from rutina_ejercicio where CodUsuarioFk = %d", codUsuFK);
+			int borrado = stmt.executeUpdate(sql);
+			return borrado;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 
 }

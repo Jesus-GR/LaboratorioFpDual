@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
 import edu.fpdual.dao.Usuario;
+import edu.fpdual.excepciones.ErrorNuevoUsuario;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DateCell;
@@ -17,6 +18,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -90,15 +92,12 @@ public class UsuarioManager {
 			result.beforeFirst();
 			result.next();
 			Usuario usuario = new Usuario(result);
-			System.out.println(usuario);
-			if(usuario.getEmail() != null ) {
-				return usuario;
-				
+			if(usuario != null) {
+					return usuario;
 			}else {
 				return null;
-				
-				
 			}
+			
 
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -157,14 +156,16 @@ public List<Usuario> findAll (Connection con){
 	 * @param contraseña the contraseña
 	 * @param ape1 the ape 1
 	 * @param ape2 the ape 2
-	 * @param direccion the direccion
+	 * @param email the email
 	 * @param fecha the fecha
 	 * @param peso the peso
 	 * @param altura the altura
 	 * @return the int
+	 * @throws SQLException 
 	 */
-	public int insertUsuario(Connection con,String nombre, String contraseña, String ape1, String ape2, String email, String fecha, String peso, String altura) {
-		try(PreparedStatement stmt = con.prepareStatement("insert usuario values ((Select Max(CodUsu) + 1 from usuario as max),?,?,?,?,?,?,?,?);")){
+	public int insertUsuario(Connection con,String nombre, String contraseña, String ape1, String ape2, String email, String fecha, String peso, String altura) throws ErrorNuevoUsuario, SQLException {
+		
+			try(PreparedStatement stmt = con.prepareStatement("insert usuario values ((Select Max(CodUsu) + 1 from usuario as max),?,?,?,?,?,?,?,?);")){
 			stmt.setString(1, nombre);
 			stmt.setString(2, contraseña);
 			stmt.setString(3, ape1);
@@ -173,15 +174,23 @@ public List<Usuario> findAll (Connection con){
 			stmt.setString(6, fecha);
 			stmt.setString(7, peso);
 			stmt.setString(8, altura);
-			int result = stmt.executeUpdate();
-	
-			return result;
-		}catch(SQLException e) {
-			e.printStackTrace();
+			
+			if(!email.contains("@") || email.isEmpty() || nombre.isEmpty() || contraseña.isEmpty() || ape1.isEmpty() || ape2.isEmpty() || peso.isEmpty() || altura.isEmpty()){
+				return 0;	
+			}else {
+				int result = stmt.executeUpdate();
+				return result;
+			}
+			
+			
+			
+		}catch (SQLException e) {
 			return 0;
+			
 		}
-		
+
 	}
+	
 	
 	/**
 	 * Delete usuario.

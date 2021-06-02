@@ -23,7 +23,7 @@
             <Label layoutX="29.0" layoutY="23.0" prefHeight="21.0" prefWidth="82.0" text="Nombre" />
             <Label layoutX="32.0" layoutY="61.0" prefHeight="21.0" prefWidth="105.0" text="Primer apellido" />
             <Label layoutX="32.0" layoutY="95.0" prefHeight="21.0" prefWidth="123.0" text="Segundo apellido" />
-            <Label layoutX="32.0" layoutY="133.0" prefHeight="21.0" prefWidth="98.0" text="Dirección" />
+            <Label layoutX="32.0" layoutY="133.0" prefHeight="21.0" prefWidth="98.0" text="Email" />
             <Label layoutX="23.0" layoutY="177.0" prefHeight="21.0" prefWidth="123.0" text="Fecha nacimiento" />
             <Label layoutX="29.0" layoutY="239.0" prefHeight="21.0" prefWidth="82.0" text="Peso" />
             <Label layoutX="168.0" layoutY="239.0" prefHeight="21.0" prefWidth="40.0" text="Altura" />
